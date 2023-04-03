@@ -1,19 +1,6 @@
 version: "3"
 
 services:
-  memcached-server:
-    image: memcached:latest
-    deploy:
-      replicas: 2
-      resources:
-        limits:
-          cpus: "2"
-          memory: 2G
-    ports:
-      - "11211:11211"
-    environment:
-      - MEMCACHED_MAX_MEMORY=64
-    restart: always
   squid-proxy:
     build: .
     ports:
@@ -29,4 +16,18 @@ services:
       - CACHE_HOST=memcached-server
       - CACHE_PORT=11211
     restart: always
-
+    depends_on:
+      - memcached-server
+  memcached-server:
+    image: memcached:latest
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          cpus: "2"
+          memory: 2G
+    ports:
+      - "11211:11211"
+    environment:
+      - MEMCACHED_MAX_MEMORY=64
+    restart: always
