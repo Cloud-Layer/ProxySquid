@@ -17,8 +17,8 @@ services:
       - CACHE_PORT=11211
     restart: always
     depends_on:
-      - memcached
-  memcached:
+      - memcached-server
+  memcached-server:
     image: memcached:latest
     deploy:
       replicas: 2

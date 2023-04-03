@@ -3,7 +3,7 @@
 use Cache::Memcached;
 
 my $memd = Cache::Memcached->new({
-    servers => ["memcached:11211"],
+    servers => ["memcached-server:11211"],
     namespace => 'squid_auth',
 });
 
