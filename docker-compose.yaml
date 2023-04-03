@@ -29,6 +29,4 @@ services:
       - CACHE_HOST=memcached-server
       - CACHE_PORT=11211
     restart: always
-    depends_on:
-      - memcached-server
 
