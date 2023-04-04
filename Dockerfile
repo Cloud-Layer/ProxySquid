@@ -6,7 +6,6 @@ RUN apt-get install -y apache2-utils
 RUN apt-get install -y libcache-memcached-perl
 RUN apt-get install -y python3
 RUN apt-get -y update
-RUN apt-get install -y python3-memcached
 RUN sudo pip3 install -y python3-memcached
 # RUN apt-get install -y libcache-redis-perl
 
