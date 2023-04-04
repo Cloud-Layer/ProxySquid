@@ -6,7 +6,8 @@ RUN apt-get install -y apache2-utils
 RUN apt-get install -y libcache-memcached-perl
 RUN apt-get install -y python3
 RUN apt-get -y update
-RUN sudo pip3 install -y python3-memcached
+RUN apt-get install python3-pip
+RUN pip3 install -y python3-memcached
 # RUN apt-get install -y libcache-redis-perl
 
 COPY auth.py /etc/squid/auth.py
