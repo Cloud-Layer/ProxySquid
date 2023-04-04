@@ -13,3 +13,4 @@ SQUID_PASS=${SQUID_PASS}
 if ( [ -n "${SQUID_USER}" ] && [ -n "${SQUID_PASS}" ] ); then
   # Create a username/password for ncsa_auth.
   htpasswd -c -i -b /etc/squid/.htpasswd ${SQUID_USER} ${SQUID_PASS}
+  fi
