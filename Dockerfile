@@ -8,7 +8,7 @@ RUN apt-get install -y libcache-memcached-perl
 
 COPY squid.conf /etc/squid/squid.conf
 COPY squid_memcached_auth.pl /usr/local/bin/squid_memcached_auth.pl
-RUN htpasswd -c -i -b /etc/squid/.htpasswd ${SQUID_USER} ${SQUID_PASS}
+RUN htpasswd -c -i -b /etc/squid/.htpasswd proxy101 'BqFK_&zRFX!7uVFDb'
 EXPOSE 3128/tcp
 
 CMD ["squid", "-N"]
