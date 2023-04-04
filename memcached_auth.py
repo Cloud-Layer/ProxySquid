@@ -1,20 +1,23 @@
+#!/usr/bin/env python
+
+import sys
 import memcache
 
-def auth(username, password):
-    mc = memcache.Client(['memcached-server:11211'])
-    key = 'auth:%s' % username
-    cached_password = mc.get(key)
-    if cached_password and cached_password == password:
-        return True
-    else:
-        return False
+# Configuration
+MEMCACHED_SERVER = 'memcached-server:11211'
+CACHE_LIFETIME = 3600
 
-def store(username, password):
-    mc = memcache.Client(['memcached-server:11211'])
-    key = 'auth:%s' % username
-    mc.set(key, password)
+# Connect to Memcached server
+mc = memcache.Client([MEMCACHED_SERVER])
 
-def delete(username):
-    mc = memcache.Client(['memcached-server:11211'])
-    key = 'auth:%s' % username
-    mc.delete(key)
+# Read credentials from Squid
+line = sys.stdin.readline().strip()
+username, password = line.split()
+
+# Authenticate user
+if mc.get(username) == password:
+    # Store credentials in Memcached
+    mc.set(username, password, CACHE_LIFETIME)
+    print('OK')
+else:
+    print('ERR')
