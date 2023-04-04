@@ -7,8 +7,8 @@ chown -R proxy:proxy /var/log/squid
 mkdir -p /var/cache/squid
 chown -R proxy:proxy /var/cache/squid
 
-SQUID_USER=${SQUID_USER}
-SQUID_PASS=${SQUID_PASS}
+SQUID_USER=proxy101
+SQUID_PASS=BqFK_&zRFX!7uVFDb
 
 if ( [ -n "${SQUID_USER}" ] && [ -n "${SQUID_PASS}" ] ); then
   # Create a username/password for ncsa_auth.
