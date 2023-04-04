@@ -4,7 +4,7 @@ services:
   squid-proxy:
     build: .
     ports:
-      - "8000-8900:8000-8900"
+      - "8000-8900:3128"
     deploy:
       resources:
         limits:
