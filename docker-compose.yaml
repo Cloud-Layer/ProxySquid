@@ -11,6 +11,8 @@ services:
           cpus: "2"
           memory: 2G
     environment:
+      - SQUID_USER=proxy101
+      - SQUID_PASS=BqFK_&zRFX!7uVFDb
       - CACHE_BACKEND=memcached
       - CACHE_HOST=memcached-server
       - CACHE_PORT=11211
