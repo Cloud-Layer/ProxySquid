@@ -14,7 +14,7 @@ services:
       MYSQL_PASSWORD: squid_password
       MYSQL_DATABASE: squid_db
   mysql:
-    image: mysql:latest
+    image: mysql:8.0
     container_name: mysql
     ports:
       - 3306:3306
