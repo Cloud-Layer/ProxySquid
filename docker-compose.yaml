@@ -4,6 +4,9 @@ services:
     build: .
     ports:
       - "8000-8900:3128"
+    links:
+       - squid
+       - mysql
     depends_on:
       - mysql
     environment:
@@ -16,6 +19,9 @@ services:
     container_name: mysql
     ports:
       - 3306:3306
+    links:
+       - mysql
+       - squid
     environment:
       MYSQL_ROOT_PASSWORD: squid_root_password
       MYSQL_DATABASE: squid_db
