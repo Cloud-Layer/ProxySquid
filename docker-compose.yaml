@@ -13,6 +13,7 @@ services:
       MYSQL_DATABASE: squid_db
   mysql:
     image: mysql:latest
+    container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: squid_root_password
       MYSQL_DATABASE: squid_db
