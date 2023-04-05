@@ -14,6 +14,8 @@ services:
   mysql:
     image: mysql:latest
     container_name: mysql
+    ports:
+      - 3306:3306
     environment:
       MYSQL_ROOT_PASSWORD: squid_root_password
       MYSQL_DATABASE: squid_db
