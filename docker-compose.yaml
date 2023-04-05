@@ -1,33 +1,20 @@
-version: "3"
-
+version: '3'
 services:
-  squid-proxy:
+  squid:
     build: .
     ports:
-      - "8000-8900:3128"
-    deploy:
-      resources:
-        limits:
-          cpus: "2"
-          memory: 2G
-    environment:
-      - SQUID_USER=proxy101
-      - SQUID_PASS=BqFK_&zRFX!7uVFDb
-      - CACHE_BACKEND=memcached
-      - CACHE_HOST=memcached-server
-      - CACHE_PORT=11211
-    restart: always
+      - "3128:3128"
     depends_on:
-      - memcached-server
-  memcached-server:
-    image: memcached:latest
-    deploy:
-      resources:
-        limits:
-          cpus: "2"
-          memory: 2G
-    ports:
-      - "11211:11211"
+      - mysql
     environment:
-      - MEMCACHED_MAX_MEMORY=64
-    restart: always
+      MYSQL_HOST: mysql
+      MYSQL_USER: squid_user
+      MYSQL_PASSWORD: squid_password
+      MYSQL_DATABASE: squid_db
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: squid_root_password
+      MYSQL_DATABASE: squid_db
+      MYSQL_USER: squid_user
+      MYSQL_PASSWORD: squid_password
