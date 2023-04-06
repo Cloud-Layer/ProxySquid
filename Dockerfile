@@ -7,6 +7,7 @@ RUN apt-get install -y squid-langpack
 COPY squid.conf /etc/squid/squid.conf
 COPY squid_users /etc/squid/squid_users
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+COPY mysql_auth.py /usr/lib/squid/mysql_auth.py
 RUN chmod +x /usr/local/bin/entrypoint.sh
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 CMD ["squid", "-NYCd", "1"]
