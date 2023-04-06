@@ -1,5 +1,15 @@
 version: '3'
 services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: squid_root_password
+      MYSQL_DATABASE: squid_db
+      MYSQL_USER: squid_user
+      MYSQL_PASSWORD: squid_password
   squid:
     build: .
     ports:
@@ -13,13 +23,3 @@ services:
       MYSQL_USER: squid_user
       MYSQL_PASSWORD: squid_password
       MYSQL_DATABASE: squid_db
-  mysql:
-    image: mysql:8.0
-    container_name: mysql
-    ports:
-      - 3306:3306
-    environment:
-      MYSQL_ROOT_PASSWORD: squid_root_password
-      MYSQL_DATABASE: squid_db
-      MYSQL_USER: squid_user
-      MYSQL_PASSWORD: squid_password
