@@ -19,7 +19,7 @@ services:
     depends_on:
       - mysql:
           healthcheck:
-            command: bash -c "sleep 10 && dockerize -wait tcp://mysql:3306 -timeout 60s
+            test: ["CMD", "mysqladmin", "ping", "-h", "mysql"]
     environment:
       MYSQL_HOST: mysql
       MYSQL_USER: squid_user
