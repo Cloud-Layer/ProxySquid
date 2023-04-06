@@ -21,8 +21,6 @@ services:
       - "8000-8900:3128"
     links:
        - mysql
-    depends_on:
-      - mysql
     environment:
       MYSQL_HOST: mysql
       MYSQL_USER: squid_user
