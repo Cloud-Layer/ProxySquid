@@ -2,6 +2,11 @@ version: '3'
 services:
   mysql:
     image: mysql:latest
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "mysql"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
     container_name: mysql
     ports:
       - 3306:3306
@@ -18,11 +23,7 @@ services:
        - mysql
     depends_on:
       - mysql:
-      healthcheck:
-        test: ["CMD", "mysqladmin", "ping", "-h", "mysql"]
-        interval: 10s
-        timeout: 5s
-        retries: 3
+          condition: service_healthy
     environment:
       MYSQL_HOST: mysql
       MYSQL_USER: squid_user
