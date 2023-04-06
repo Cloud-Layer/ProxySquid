@@ -12,5 +12,6 @@ COPY squid_users /etc/squid/squid_users
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 COPY mysql_auth.py /usr/lib/squid/mysql_auth.py
 RUN chmod +x /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/lib/squid/mysql_auth.py
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 CMD ["squid", "-NYCd", "1"]
