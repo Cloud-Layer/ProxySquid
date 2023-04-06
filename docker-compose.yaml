@@ -18,8 +18,11 @@ services:
        - mysql
     depends_on:
       - mysql:
-          healthcheck:
-            test: ["CMD", "mysqladmin", "ping", "-h", "mysql"]
+      healthcheck:
+        test: ["CMD", "mysqladmin", "ping", "-h", "mysql"]
+        interval: 10s
+        timeout: 5s
+        retries: 3
     environment:
       MYSQL_HOST: mysql
       MYSQL_USER: squid_user
