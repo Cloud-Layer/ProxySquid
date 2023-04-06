@@ -5,8 +5,8 @@ RUN apt-get install -y libmysqlclient-dev
 RUN apt-get install -y mysql-client
 RUN apt-get install -y squid-langpack
 RUN apt-get install -y pip
-RUN apt-get install python3
-RUN apt-get install mysql-connector-python
+RUN apt-get install -y python3
+RUN pip install mysql-connector-python
 COPY squid.conf /etc/squid/squid.conf
 COPY squid_users /etc/squid/squid_users
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
