@@ -14,7 +14,8 @@ password = "squid_password"
 database = "squid_db"
 
 # Get username and password from Squid
-line = sys.stdin.readline().strip()
+# line = sys.stdin.readline().strip()
+line = input().strip()
 username, password = line.split()
 
 # Connect to MySQL database
@@ -24,7 +25,7 @@ cursor = cnx.cursor()
 
 # Check if user is authenticated
 logging.debug("Checking user authentication...")
-query = "SELECT * FROM squid_db.squid_users WHERE username=%s AND password=%s"
+query = "SELECT * FROM squid_users WHERE username=%s AND password=%s"
 cursor.execute(query, (username, password))
 
 # fetch the result set
