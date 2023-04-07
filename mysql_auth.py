@@ -27,6 +27,7 @@ cursor = cnx.cursor()
 logging.debug("Checking user authentication...")
 query = "SELECT * FROM squid_users WHERE username=%s AND password=%s"
 cursor.execute(query, (username, password))
+result = cursor.fetchone()
 
 # fetch the result set
 result = cursor.fetchone()
