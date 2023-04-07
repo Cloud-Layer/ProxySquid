@@ -24,9 +24,13 @@ cursor = cnx.cursor()
 
 # Check if user is authenticated
 logging.debug("Checking user authentication...")
-query = "SELECT * FROM squid_users WHERE username=%s AND password=%s"
+query = "SELECT * FROM squid_db.squid_users WHERE username=%s AND password=%s"
 cursor.execute(query, (username, password))
+
+# fetch the result set
 result = cursor.fetchone()
+for row in result:
+    print(row)
 
 if result is not None:
     # User is authenticated
@@ -36,3 +40,7 @@ else:
     # User is not authenticated
     logging.debug("User authentication failed: %s", username)
     print("ERR")
+
+# close the cursor and connection
+cursor.close()
+cnx.close()
