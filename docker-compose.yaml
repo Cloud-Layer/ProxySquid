@@ -17,18 +17,22 @@ services:
       MYSQL_PASSWORD: squid_password
   squid:
     build: .
-    command: ["sh", "-c", "sleep 60"]
     deploy:
       replicas: 1
     ports:
       - "8000-8900:3128"
     links:
        - mysql
+    depends_on:
+      mysql:
+        condition: service_healthy
+    restart: on-failure
     environment:
       MYSQL_HOST: mysql
       MYSQL_USER: squid_user
       MYSQL_PASSWORD: squid_password
       MYSQL_DATABASE: squid_db
+    command: ["sh", "-c", "sleep 60 && echo 'Second container started'"]
 #    volumes:
 #      - cache1-volumes:/var/spool/squid/cache1
 #      - cache2-volumes:/var/spool/squid/cache2
