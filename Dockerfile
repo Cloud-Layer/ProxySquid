@@ -22,7 +22,7 @@ COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 COPY mysql_auth.py /usr/lib/squid/mysql_auth.py
 
 # Create Cache folders:
-RUN cd /var/spool/squid/
+RUN cd /var/log/squid
 RUN mkdir cache1
 RUN mkdir cache2
 RUN mkdir cache3

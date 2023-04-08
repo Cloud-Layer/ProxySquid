@@ -17,6 +17,7 @@ services:
       MYSQL_PASSWORD: squid_password
   squid:
     build: .
+    command: ["sh", "-c", "sleep 60"]
     deploy:
       replicas: 1
     ports:
