@@ -29,10 +29,10 @@ services:
       MYSQL_PASSWORD: squid_password
       MYSQL_DATABASE: squid_db
     volumes:
-       - cache1:/var/spool/squid/cache1
-       - cache2:/var/spool/squid/cache2
-       - cache3:/var/spool/squid/cache1
-       - squidlogs:/var/log/squid
+      - cache1:/var/spool/squid/cache1
+      - cache2:/var/spool/squid/cache2
+      - cache3:/var/spool/squid/cache1
+      - squidlogs:/var/log/squid
   volumes:
      cache1:
      cache2:
