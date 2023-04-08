@@ -9,6 +9,8 @@ RUN apt-get install -y python3
 RUN pip install mysql-connector-python
 RUN apt-get update -y
 RUN apt-get install -y vim
+RUN apt-get install cpanminus
+RUN cpanm DBD::mysql
 COPY squid.conf /etc/squid/squid.conf
 COPY squid_users /etc/squid/squid_users
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
