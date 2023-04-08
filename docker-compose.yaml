@@ -17,6 +17,8 @@ services:
       MYSQL_PASSWORD: squid_password
   squid:
     build: .
+    deploy:
+      replicas: 1
     ports:
       - "8000-8900:3128"
     links:
