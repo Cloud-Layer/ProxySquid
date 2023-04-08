@@ -21,6 +21,11 @@ COPY squid_users /etc/squid/squid_users
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 COPY mysql_auth.py /usr/lib/squid/mysql_auth.py
 
+# Create Cache folders:
+mkdir -f /var/spool/squid/cache1
+mkdir -f /var/spool/squid/cache2
+mkdir -f /var/spool/squid/cache3
+
 # Change permissions
 RUN chmod a+x /etc/squid/squid.conf
 RUN chmod +x /usr/local/bin/entrypoint.sh
