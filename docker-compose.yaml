@@ -33,8 +33,3 @@ services:
       - cache2:/var/spool/squid/cache2
       - cache3:/var/spool/squid/cache3
       - squidlogs:/var/log/squid
-  volumes:
-     cache1:
-     cache2:
-     cache3:
-     squidlogs:
