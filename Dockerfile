@@ -27,6 +27,9 @@ RUN mkdir -p /var/log/squid/cache2
 RUN mkdir -p /var/log/squid/cache3
 
 # Change permissions
+RUN chmod +x /var/log/squid/cache1
+RUN chmod +x /var/log/squid/cache2
+RUN chmod +x /var/log/squid/cache3
 RUN chmod a+x /etc/squid/squid.conf
 RUN chmod +x /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/lib/squid/mysql_auth.py
