@@ -20,7 +20,7 @@ services:
     deploy:
       replicas: 1
     ports:
-      - "8000-8900:3128"
+      - "8800-8900:3128"
     links:
        - mysql
     depends_on:
