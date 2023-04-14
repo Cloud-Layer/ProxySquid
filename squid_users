@@ -1,0 +1,2 @@
+CREATE TABLE IF NOT EXISTS squid_users (username VARCHAR(32) NOT NULL, password VARCHAR(32) NOT NULL);
+INSERT INTO squid_users (username, password) VALUES ('proxy101', 'BqFK_&zRFX!7uVFDb'), ('diab', '1q2w3e4r');

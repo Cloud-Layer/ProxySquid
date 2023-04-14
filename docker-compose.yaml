@@ -1,0 +1,45 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:latest
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    container_name: mysql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: squid_root_password
+      MYSQL_DATABASE: squid_db
+      MYSQL_USER: squid_user
+      MYSQL_PASSWORD: squid_password
+  squid:
+    build: .
+    deploy:
+      replicas: 100
+    ports:
+      - "8800-8900:3128"
+    links:
+       - mysql
+    depends_on:
+      mysql:
+        condition: service_healthy
+    restart: on-failure
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: squid_user
+      MYSQL_PASSWORD: squid_password
+      MYSQL_DATABASE: squid_db
+    command: ["sh", "-c", "sleep 60 && echo 'Second container started'"]
+#    volumes:
+#      - cache1-volumes:/var/spool/squid/cache1
+#      - cache2-volumes:/var/spool/squid/cache2
+#      - cache3-volumes:/var/spool/squid/cache3
+#      - logs-volume:/var/log/squid
+#  volumes:
+#     cache1-volumes:
+#     cache2-volumes:
+#     cache3-volumes:
+#     logs-volume:
