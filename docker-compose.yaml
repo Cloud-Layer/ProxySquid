@@ -18,7 +18,7 @@ services:
   squid:
     build: .
     deploy:
-      replicas: 100
+      replicas: 50
     ports:
       - "8800-8900:3128"
     links:
