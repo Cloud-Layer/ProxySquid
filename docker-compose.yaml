@@ -21,7 +21,6 @@ services:
       replicas: 100
     ports:
       - "8800-8900:3128"
-    network_mode: host
     links:
        - mysql
     depends_on:
