@@ -21,7 +21,6 @@ services:
       replicas: 100
     ports:
       - "8800-8900:3128"
-    network_mode: host
     links:
        - mysql
     depends_on:
@@ -34,13 +33,14 @@ services:
       MYSQL_PASSWORD: squid_password
       MYSQL_DATABASE: squid_db
     command: ["sh", "-c", "sleep 60 && echo 'Second container started'"]
-#    volumes:
-#      - cache1-volumes:/var/spool/squid/cache1
-#      - cache2-volumes:/var/spool/squid/cache2
-#      - cache3-volumes:/var/spool/squid/cache3
-#      - logs-volume:/var/log/squid
-#  volumes:
-#     cache1-volumes:
-#     cache2-volumes:
-#     cache3-volumes:
-#     logs-volume:
+    networks:
+      squid_IP1:
+        ipv4_address: 138.199.41.117
+      squid_IP2:
+        ipv4_address: 138.199.41.118
+      squid_IP3:
+        ipv4_address: 138.199.41.120
+      squid_IP4:
+        ipv4_address: 138.199.41.121
+      squid_IP5:
+        ipv4_address: 138.199.41.122
