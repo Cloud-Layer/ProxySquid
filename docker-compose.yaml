@@ -36,11 +36,16 @@ services:
     networks:
       squid_IP1:
         ipv4_address: 138.199.41.117
+        driver: bridge
       squid_IP2:
         ipv4_address: 138.199.41.118
+        driver: bridge
       squid_IP3:
         ipv4_address: 138.199.41.120
+        driver: bridge
       squid_IP4:
         ipv4_address: 138.199.41.121
+        driver: bridge
       squid_IP5:
         ipv4_address: 138.199.41.122
+        driver: bridge
