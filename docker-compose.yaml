@@ -49,3 +49,4 @@ services:
       squid_IP5:
         ipv4_address: 138.199.41.122
         driver: bridge
+
