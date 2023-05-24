@@ -1,18 +1,10 @@
 version: '3.9'
 
-networks:
-  proxy_network:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 172.20.0.0/16
-          gateway: 172.20.0.1
-
 services:
   mysql:
     image: mysql:latest
     networks:
-      - proxy-stack_proxy_network
+      - proxysquid_default
     dns:
       - 8.8.8.8
       - 1.1.1.1
@@ -32,7 +24,7 @@ services:
   squid:
     build: .
     networks:
-      - proxy-stack_proxy_network
+      - proxysquid_default
     dns:
       - 8.8.8.8
       - 1.1.1.1
