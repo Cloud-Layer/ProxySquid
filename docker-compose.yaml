@@ -4,8 +4,8 @@ services:
   mysql:
     image: mysql:latest
     dns:
-      - "8.8.8.8"
-      - "1.1.1.1"
+      - 8.8.8.8
+      - 1.1.1.1
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 10s
@@ -22,8 +22,8 @@ services:
   squid:
     build: .
     dns:
-      - "8.8.8.8"
-      - "1.1.1.1"
+      - 8.8.8.8
+      - 1.1.1.1
     deploy:
       replicas: 100
     ports:
