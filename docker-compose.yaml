@@ -1,22 +1,11 @@
 version: '3.9'
 
-networks:
-  proxy-stack_default:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 172.20.0.0/16
-          gateway: 172.20.0.1
-          dns: 8.8.8.8
-
 services:
   mysql:
     image: mysql:latest
-    networks:
-      - proxy-stack_default
     dns:
-      - 8.8.8.8
-      - 1.1.1.1
+      - "8.8.8.8"
+      - "1.1.1.1"
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 10s
@@ -32,11 +21,9 @@ services:
       MYSQL_PASSWORD: squid_password
   squid:
     build: .
-    networks:
-      - proxy-stack_default
     dns:
-      - 8.8.8.8
-      - 1.1.1.1
+      - "8.8.8.8"
+      - "1.1.1.1"
     deploy:
       replicas: 100
     ports:
