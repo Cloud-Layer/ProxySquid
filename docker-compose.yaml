@@ -27,6 +27,12 @@ services:
       mysql:
         condition: service_healthy
     restart: on-failure
+    networks:
+      proxysquid_default:
+        dns:
+          - 8.8.8.8
+          - 1.1.1.1
+          - 8.8.4.4
     environment:
       MYSQL_HOST: mysql
       MYSQL_USER: squid_user
