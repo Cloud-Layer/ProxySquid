@@ -1,4 +1,4 @@
-version: '3'
+version: '3.9'
 services:
   mysql:
     image: mysql:latest
@@ -17,6 +17,9 @@ services:
       MYSQL_PASSWORD: squid_password
   squid:
     build: .
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
     deploy:
       replicas: 100
     ports:
@@ -27,15 +30,10 @@ services:
       mysql:
         condition: service_healthy
     restart: on-failure
-    dns:
-      - 8.8.8.8
-      - 1.1.1.1
-      - 8.8.4.4
     environment:
       MYSQL_HOST: mysql
       MYSQL_USER: squid_user
       MYSQL_PASSWORD: squid_password
       MYSQL_DATABASE: squid_db
-      PUBLIC_IP: 138.199.41.$((117 + RANDOM % 5))
     command: ["sh", "-c", "sleep 60 && echo 'Second container started'"]
 
