@@ -1,4 +1,13 @@
 version: '3.9'
+
+networks:
+  proxy_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+          gateway: 172.20.0.1
+          ip_range: 138.199.41.117/29
 services:
   mysql:
     image: mysql:latest
@@ -43,13 +52,4 @@ services:
       MYSQL_PASSWORD: squid_password
       MYSQL_DATABASE: squid_db
     command: ["sh", "-c", "sleep 60 && echo 'Second container started'"]
-
-networks:
-  proxy_network:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 172.20.0.0/16
-          gateway: 172.20.0.1
-          ip_range: 138.199.41.117/29
 
