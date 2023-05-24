@@ -2,6 +2,11 @@ version: '3.9'
 services:
   mysql:
     image: mysql:latest
+    networks:
+      - proxy_network
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 10s
@@ -17,6 +22,8 @@ services:
       MYSQL_PASSWORD: squid_password
   squid:
     build: .
+    networks:
+      - proxy_network
     dns:
       - 8.8.8.8
       - 1.1.1.1
