@@ -12,7 +12,7 @@ services:
   mysql:
     image: mysql:latest
     networks:
-      - proxy_network
+      - proxy-stack_proxy_network
     dns:
       - 8.8.8.8
       - 1.1.1.1
@@ -32,7 +32,7 @@ services:
   squid:
     build: .
     networks:
-      - proxy_network
+      - proxy-stack_proxy_network
     dns:
       - 8.8.8.8
       - 1.1.1.1
