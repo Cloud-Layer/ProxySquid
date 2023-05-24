@@ -3,8 +3,6 @@ version: '3.9'
 services:
   mysql:
     image: mysql:latest
-    networks:
-      - proxysquid_default
     dns:
       - 8.8.8.8
       - 1.1.1.1
@@ -23,8 +21,6 @@ services:
       MYSQL_PASSWORD: squid_password
   squid:
     build: .
-    networks:
-      - proxysquid_default
     dns:
       - 8.8.8.8
       - 1.1.1.1
