@@ -29,7 +29,11 @@ services:
       MYSQL_PASSWORD: squid_password
   squid:
     build: .
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
     deploy:
+      replicas: 100
       resources:
         limits:
           cpus: '0'
@@ -37,11 +41,6 @@ services:
         reservations:
           cpus: '0'
           memory: 0
-    dns:
-      - 8.8.8.8
-      - 1.1.1.1
-    deploy:
-      replicas: 100
     ports:
       - "8800-8900:3128"
     links:
