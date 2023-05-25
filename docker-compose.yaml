@@ -6,7 +6,6 @@ services:
     dns:
       - 8.8.8.8
       - 1.1.1.1
-    network_mode: "host"
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 10s
@@ -25,7 +24,6 @@ services:
     dns:
       - 8.8.8.8
       - 1.1.1.1
-    network_mode: "host"
     deploy:
       replicas: 100
     ports:
