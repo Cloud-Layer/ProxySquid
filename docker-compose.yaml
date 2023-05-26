@@ -6,8 +6,8 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '0'
-          memory: infinity
+          cpus: 0
+          memory: 0
     dns:
       - 8.8.8.8
       - 1.1.1.1
@@ -33,8 +33,8 @@ services:
       replicas: 100
       resources:
         limits:
-          cpus: '0'
-          memory: infinity
+          cpus: 0
+          memory: 0
     ports:
       - "8800-8900:3128"
     links:
