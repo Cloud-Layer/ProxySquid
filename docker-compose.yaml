@@ -3,11 +3,6 @@ version: '3.9'
 services:
   mysql:
     image: mysql:latest
-    deploy:
-      resources:
-        limits:
-          cpus: 0
-          memory: 0
     dns:
       - 8.8.8.8
       - 1.1.1.1
