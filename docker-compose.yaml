@@ -3,13 +3,14 @@ version: '3.9'
 services:
   mysql:
     image: mysql:latest
-    resources:
-      limits:
-        cpus: '6'
-        memory: "6g"
-      reservations:
-        cpus: '4'
-        memory: "4g"
+    deploy:
+      resources:
+        limits:
+          cpus: '6'
+          memory: "6g"
+        reservations:
+          cpus: '4'
+          memory: "4g"
     dns:
       - 8.8.8.8
       - 1.1.1.1
