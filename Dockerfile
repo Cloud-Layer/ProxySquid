@@ -3,8 +3,18 @@ FROM ubuntu:latest
 # Update OS
 RUN apt-get update -y
 
-# Install Squid and other dependencies
-RUN apt-get install -y squid libmysqlclient-dev mysql-client squid-langpack vim cpanminus python3-pip
+#Install all relevants application adn plugins
+RUN apt-get install -y squid 
+RUN apt-get install -y libmysqlclient-dev
+RUN apt-get install -y mysql-client
+RUN apt-get install -y squid-langpack
+RUN apt-get install -y pip
+RUN apt-get install -y python3
+RUN pip install mysql-connector-python
+RUN apt-get update -y
+RUN apt-get install -y vim
+RUN apt-get install -y cpanminus
+RUN cpanm DBD::mysql
 
 # Install Python MySQL Connector
 RUN pip install mysql-connector-python
