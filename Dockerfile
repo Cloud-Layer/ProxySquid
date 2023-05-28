@@ -25,11 +25,14 @@ COPY mysql_auth.py /usr/lib/squid/mysql_auth.py
 RUN mkdir -p /var/log/squid/cache1
 RUN mkdir -p /var/log/squid/cache2
 RUN mkdir -p /var/log/squid/cache3
+RUN mkdir -p /var/spool/squid
 
 # Change permissions
 RUN chmod +x /var/log/squid/cache1
 RUN chmod +x /var/log/squid/cache2
 RUN chmod +x /var/log/squid/cache3
+RUN chown -R proxy:proxy /var/spool/squid
+RUN chmod 750 /var/spool/squid
 RUN chmod a+x /etc/squid/squid.conf
 RUN chmod +x /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/lib/squid/mysql_auth.py
