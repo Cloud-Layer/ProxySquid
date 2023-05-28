@@ -36,7 +36,9 @@ RUN mkdir -p /var/log/squid/cache1 \
 
 # Change permissions
 RUN chmod -R 777 /var/spool/squid \
+    && chown -R proxy:proxy /var/spool/squid \
     && chmod a+x /etc/squid/squid.conf \
+    && chown -R proxy:proxy /var/log/squid \
     && chmod +x /usr/local/bin/entrypoint.sh \
     && chmod +x /usr/lib/squid/mysql_auth.py
 
