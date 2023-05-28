@@ -28,17 +28,17 @@ COPY squid_users /etc/squid/squid_users
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 COPY mysql_auth.py /usr/lib/squid/mysql_auth.py
 
-# Create cache folders
-RUN mkdir -p /var/log/squid/cache1 \
-    && mkdir -p /var/log/squid/cache2 \
-    && mkdir -p /var/log/squid/cache3 \
-    && mkdir -p /var/spool/squid
-
-# Change permissions
-RUN chmod -R 777 /var/spool/squid \
+# Create cache directories and adjust permissions
+RUN mkdir -p /var/spool/squid \
+    && mkdir -p /var/log/squid \
+    && mkdir -p /var/cache/squid \
     && chown -R proxy:proxy /var/spool/squid \
-    && chmod a+x /etc/squid/squid.conf \
     && chown -R proxy:proxy /var/log/squid \
+    && chown -R proxy:proxy /var/cache/squid \
+    && chmod -R 777 /var/spool/squid \
+    && chmod -R 777 /var/log/squid \
+    && chmod -R 777 /var/cache/squid \
+    && chmod a+x /etc/squid/squid.conf \
     && chmod +x /usr/local/bin/entrypoint.sh \
     && chmod +x /usr/lib/squid/mysql_auth.py
 
