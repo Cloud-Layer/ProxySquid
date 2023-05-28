@@ -34,7 +34,11 @@ services:
       - 1.1.1.1
     network_mode: "host"
     extra_hosts:
-       - "138.199.41.117,138.199.41.118,138.199.41.120,138.199.41.121,138.199.41.122:host-gateway"
+      - "138.199.41.117:host-gateway"
+      - "138.199.41.118:host-gateway"
+      - "138.199.41.120:host-gateway"
+      - "138.199.41.121:host-gateway"
+      - "138.199.41.122:host-gateway"
     deploy:
       replicas: 100
       resources:
