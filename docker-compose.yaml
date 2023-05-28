@@ -15,10 +15,10 @@ services:
       - 8.8.8.8
       - 1.1.1.1
     extra_hosts:
-      - "138.199.41.118:host-gateway"
-      - "138.199.41.120:host-gateway"
-      - "138.199.41.121:host-gateway"
-      - "138.199.41.122:host-gateway"
+      - "host-gateway-1:138.199.41.118"
+      - "host-gateway-2:138.199.41.120"
+      - "host-gateway-3:138.199.41.121"
+      - "host-gateway-4:138.199.41.122"
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 10s
