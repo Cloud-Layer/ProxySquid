@@ -29,7 +29,6 @@ COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 COPY mysql_auth.py /usr/lib/squid/mysql_auth.py
 
 # Create cache directories and adjust permissions
-RUN rm -rf /var/spool/squid
 RUN mkdir -p /var/spool/squid \
     && mkdir -p /var/log/squid \
     && mkdir -p /var/cache/squid \
