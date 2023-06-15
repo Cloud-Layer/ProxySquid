@@ -37,15 +37,15 @@ services:
     dns:
       - 8.8.8.8
       - 1.1.1.1
-#    deploy:
-#      replicas: 100
-#      resources:
-#        limits:
-#          cpus: '4'
-#          memory: "4g"
-#        reservations:
-#          cpus: '2'
-#          memory: "2g"
+    deploy:
+      replicas: 100
+      resources:
+        limits:
+          cpus: '4'
+          memory: "6g"
+        reservations:
+          cpus: '2'
+          memory: "4g"
     ports:
       - "8800-8900:3128"
     links:
