@@ -57,6 +57,7 @@ services:
       - "8800-8900:3128"
     links:
       - mysql
+      - dns-cache
     depends_on:
       mysql:
         condition: service_healthy
