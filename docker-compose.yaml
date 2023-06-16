@@ -37,7 +37,7 @@ services:
     restart: unless-stopped
     command: sh -c "apk update && apk add dnsmasq && echo 'cache-size=1000' > /etc/dnsmasq.conf && dnsmasq"
     ports:
-      - "53:53/udp"
+      - "5353:53/udp"
   squid:
     build: .
     dns:
