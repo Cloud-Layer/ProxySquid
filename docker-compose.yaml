@@ -42,10 +42,10 @@ services:
       resources:
         limits:
           cpus: '4'
-          memory: "4g"
+          memory: "6g"
         reservations:
           cpus: '2'
-          memory: "2g"
+          memory: "4g"
     ports:
       - "8800-8900:3128"
     links:
