@@ -49,7 +49,8 @@ services:
   squid:
     build: .
     dns:
-      - dns-cache
+      - 138.199.41.122
+      - 138.199.41.121
       - 8.8.8.8
       - 1.1.1.1
     deploy:
