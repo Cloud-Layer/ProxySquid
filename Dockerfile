@@ -16,6 +16,9 @@ RUN apt-get install -y vim
 RUN apt-get install -y cpanminus
 RUN cpanm DBD::mysql
 
+# Upgrade all
+RUN apt-get upgrade -y
+
 # Install Python MySQL Connector
 RUN pip install mysql-connector-python
 
