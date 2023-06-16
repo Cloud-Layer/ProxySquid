@@ -37,11 +37,10 @@ services:
     ports:
       - 53:53/tcp
       - 53:53/udp
-      - - 8081:80
+      - 8081:80
     environment:
       - DNS1=8.8.8.8
       - DNS2=8.8.4.4
-      - TZ=Your/Timezone
     volumes:
       - ./etc-pihole/:/etc/pihole/
     dns:
