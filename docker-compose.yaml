@@ -32,11 +32,16 @@ services:
       MYSQL_DATABASE: squid_db
       MYSQL_USER: squid_user
       MYSQL_PASSWORD: squid_password
+  dns-cache:
+    image: alpine:latest
+    restart: unless-stopped
+    command: sh -c "apk update && apk add dnsmasq && echo 'cache-size=1000' > /etc/dnsmasq.conf && dnsmasq"
+    ports:
+      - "53:53/udp"
   squid:
     build: .
     dns:
-      - 208.67.222.222
-      - 208.67.220.220
+      - dns-cache
       - 8.8.8.8
       - 1.1.1.1
     deploy:
