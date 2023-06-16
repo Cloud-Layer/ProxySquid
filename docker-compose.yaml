@@ -38,7 +38,7 @@ services:
       - 8.8.8.8
       - 1.1.1.1
     deploy:
-      replicas: 10
+      replicas: 100
       resources:
         limits:
           cpus: '4'
