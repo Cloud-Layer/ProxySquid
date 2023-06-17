@@ -32,26 +32,12 @@ services:
       MYSQL_DATABASE: squid_db
       MYSQL_USER: squid_user
       MYSQL_PASSWORD: squid_password
-  dns-cache:
-    image: pihole/pihole:latest
-    ports:
-      - 53:53/tcp
-      - 53:53/udp
-      - 8081:80
-    environment:
-      - DNS1=8.8.8.8
-      - DNS2=8.8.4.4
-    volumes:
-      - ./etc-pihole/:/etc/pihole/
-    dns:
-      - 127.0.0.1
-      - 1.1.1.1
   squid:
     build: .
     dns:
       - 208.67.222.222
+      - 8.8.8.8
       - 1.1.1.1
-      - 208.67.220.220
     deploy:
       replicas: 100
       resources:
@@ -65,7 +51,6 @@ services:
       - "8800-8900:3128"
     links:
       - mysql
-      - dns-cache
     depends_on:
       mysql:
         condition: service_healthy
