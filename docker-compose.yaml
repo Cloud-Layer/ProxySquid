@@ -50,9 +50,6 @@ services:
     build: .
     dns:
       - dns-cache
-      - 138.199.41.121
-      - 8.8.8.8
-      - 1.1.1.1
     deploy:
       replicas: 100
       resources:
