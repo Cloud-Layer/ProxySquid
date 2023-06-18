@@ -49,8 +49,7 @@ services:
   squid:
     build: .
     dns:
-      - 8.8.8.8
-      - 1.1.1.1
+      - dns-cache
     deploy:
       replicas: 100
       resources:
