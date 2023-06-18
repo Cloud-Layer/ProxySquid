@@ -35,8 +35,7 @@ services:
   squid:
     build: .
     dns:
-      - 127.0.0.1
-      - dns-cahce
+      - 138.199.41.122
     deploy:
       replicas: 100
       resources:
