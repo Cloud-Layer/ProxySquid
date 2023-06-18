@@ -32,10 +32,23 @@ services:
       MYSQL_DATABASE: squid_db
       MYSQL_USER: squid_user
       MYSQL_PASSWORD: squid_password
+  dns-cache:
+    image: cytopia/bind
+    deploy:
+      resources:
+        limits:
+          cpus: '4'
+          memory: "6g"
+        reservations:
+          cpus: '2'
+          memory: "4g"
+    ports:
+      - 53:53/udp
+    environment:
+      DNS_FORWARDER: 8.8.8.8,1.1.1.1
   squid:
     build: .
     dns:
-      - 208.67.222.222
       - 8.8.8.8
       - 1.1.1.1
     deploy:
