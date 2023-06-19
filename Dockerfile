@@ -27,6 +27,7 @@ COPY squid.conf /etc/squid/squid.conf
 COPY squid_users /etc/squid/squid_users
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 COPY mysql_auth.py /usr/lib/squid/mysql_auth.py
+COPY resolv.conf /etc/resolv.conf
 
 # Create cache directories and adjust permissions
 RUN mkdir -p /var/spool/squid \
